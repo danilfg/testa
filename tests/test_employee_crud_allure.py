@@ -40,6 +40,7 @@ def test_student_can_manage_employee(api_client):
         assert response.status_code == 200
         created = response.json()
         created_employee_id = created["id"]
+        created_employee_uuid = created["uuid"]
         assert created["email"] == create_payload["email"]
         assert created["full_name"] == create_payload["full_name"]
 
@@ -101,4 +102,4 @@ def test_student_can_manage_employee(api_client):
         attach_json("delete-employee-response", response.json())
 
         assert response.status_code == 200
-        assert response.json()["deleted_employee_id"] == created_employee_id
+        assert response.json()["deleted_employee_id"] == created_employee_uuid

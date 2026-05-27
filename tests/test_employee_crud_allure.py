@@ -5,6 +5,10 @@ import pytest
 
 from conftest import attach_json
 
+pytestmark = [
+    allure.parent_suite("EasyBank API"),
+    allure.suite("Students / Employees"),
+    allure.sub_suite("Employee CRUD")]
 
 def unique_employee_payload(prefix: str = "jenkins") -> dict:
     suffix = uuid.uuid4().hex[:8]
